@@ -29,7 +29,7 @@ class Study(models.Model):
   author = models.CharField(max_length=100)
   journal = models.CharField(max_length=200)
   year = models.IntegerField('year', max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year)
-  funder = models.CharField(max_length=200, blank=True)
+  url = models.URLField(max_length=250)
   def __str__(self):              # __unicode__ on Python 2
     return self.title
   class Meta:
