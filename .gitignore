@@ -8,7 +8,7 @@
 build
 
 # SQLite3 database files:
-*.db
+#*.db
 
 # Logs:
 *.log
