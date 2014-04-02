@@ -196,12 +196,19 @@ DJANGO_APPS = (
 LOCAL_APPS = (
     'south',
     'pbl',
-    'django_comments',
+    'fluent_comments',
+    'threadedcomments',
+    'crispy_forms',
+    'django.contrib.comments',
+    'ckeditor',
 )
-
+FLUENT_COMMENTS_EXCLUDE_FIELDS = ('title','email', 'url')
+COMMENTS_APP = 'fluent_comments'
+CKEDITOR_UPLOAD_PATH = "uploads/"
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 ########## LOGGING CONFIGURATION

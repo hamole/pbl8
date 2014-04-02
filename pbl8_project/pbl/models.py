@@ -1,5 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
+
+from ckeditor.fields import RichTextField
 
 import datetime
 YEAR_CHOICES = []
@@ -10,7 +13,7 @@ for r in range(1980, (datetime.datetime.now().year+1)):
 class Treatment(models.Model):
   name = models.CharField(max_length=100)
   slug = models.SlugField()
-  description = models.TextField()
+  description = RichTextField()
   studies_for = models.ManyToManyField('Study', blank=True, related_name="studies_for+")
   studies_against = models.ManyToManyField('Study', blank=True, related_name="studies_against+")
   def save(self, *args, **kwargs):
@@ -18,9 +21,14 @@ class Treatment(models.Model):
       # Newly created object, so set slug
       self.slug = slugify(self.name)
 
-      super(Treatment, self).save(*args, **kwargs)
+    super(Treatment, self).save(*args, **kwargs)
+
   def __str__(self):              # __unicode__ on Python 2
     return self.name
+
+  def get_absolute_url(self):
+        return reverse('pbl.views.view_treatment', args=(self.slug,))
+
   class Meta:
     ordering = ('name',)
 

@@ -3,11 +3,17 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import TemplateView
 
+from pbl.views import *
+
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^treatments/(?P<slug>[\w-]+)/$', 'pbl.views.view_treatment'),
+    url(r'^treatments/comments/', include('fluent_comments.urls')),
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^$', TemplateView.as_view(template_name='base.html')),
 
     # Examples:

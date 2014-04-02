@@ -1,0 +1,5 @@
+<div id="form-comment">
+    <form action="/comments/post/" method="post">{% csrf_token %}
+        {{ form|crispy }}
+    </form>
+</div>
