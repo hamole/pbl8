@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^treatments/(?P<slug>[\w-]+)/$', 'pbl.views.view_treatment'),
     url(r'^treatments/comments/', include('fluent_comments.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
+    url(r'^$', 'pbl.views.home'),
 
     # Examples:
     # url(r'^$', 'pbl8_project.views.home', name='home'),

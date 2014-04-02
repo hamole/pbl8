@@ -6,3 +6,6 @@ def view_treatment(request,slug):
   treatment = get_object_or_404(Treatment, slug=slug)
   return render(request, 'pbl/treatment.html', {'treatment': treatment, 
     'treatments': Treatment.objects.all()})
+
+def home(request):
+  return render(request, 'pbl/index.html', {'treatments': Treatment.objects.all()})
